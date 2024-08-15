@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 import connectMongoDB from './db/connectMongoDB.js'; 
 import authRoutes from './routes/auth.routes.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 5001;
 
 app.use(express.json()); // to parse req.body
 app.use(express.urlencoded({ extended: true })); // to parse form data
+
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 
